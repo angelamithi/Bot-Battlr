@@ -17,10 +17,22 @@ function BotsPage() {
   function addBotToArmy(bot) {
     setSelectedBots([...selectedBots, bot]);
   }
+  function deleteBot(botId){
+    fetch(`http://localhost:3000/bots/${botId}`,{
+        method:"DELETE",
+    })
+    .then((resp)=>resp.json())
+    .then(()=>{
+     const botsArray=selectedBots.filter((bot)=>bot.id !== botId)
+    setSelectedBots(botsArray);
+
+    })
+   
+  }
 
   return (
     <div>
-      {selectedBots.length > 0 && <YourBotArmy bots={selectedBots} />}
+      {selectedBots.length > 0 && <YourBotArmy bots={selectedBots}  deleteBot={deleteBot} />}
       <BotCollection botData={data} addBotToArmy={addBotToArmy} />
       
     </div>

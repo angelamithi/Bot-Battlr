@@ -9,7 +9,7 @@ const botTypeClasses = {
   Captain: "icon star",
 };
 
-function BotCard({ bot, addBotToArmy }) {
+function BotCard({ bot, addBotToArmy}) {
   return (
     <div className="ui column">
       <div className="ui card" key={bot.id} onClick={() => addBotToArmy(bot)}>
