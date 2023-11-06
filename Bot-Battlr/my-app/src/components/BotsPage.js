@@ -15,7 +15,15 @@ function BotsPage() {
   }, []);
 
   function addBotToArmy(bot) {
-    setSelectedBots([...selectedBots, bot]);
+    if (!selectedBots.map((selectedBot) => selectedBot.id).includes(bot.id)) {
+      setSelectedBots([...selectedBots, bot]);
+    } 
+    else {
+     alert("Bot already added to the army!");
+      
+    }
+    
+    
   }
   function deleteBot(botId){
     fetch(`http://localhost:3000/bots/${botId}`,{
